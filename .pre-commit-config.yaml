@@ -27,7 +27,7 @@ repos:
         args: [--select, 'F,W605,W291', --filename, '*.eb']
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    sha: v1.2.0
+    rev: v4.5.0
     hooks:
       - id: autopep8-wrapper
         name: 'autopep8-wrapper (.eb)'
@@ -43,7 +43,3 @@ repos:
       - id: end-of-file-fixer
       - id: check-merge-conflict
 
-  - repo: https://github.com/easybuilders/pre-commit-hooks-easybuild
-    sha: v0.1
-    hooks:
-      - id: check-old-easybuild-url
