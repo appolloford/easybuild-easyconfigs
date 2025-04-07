@@ -7,27 +7,34 @@
 #
 # the pep8 custom config (e.g. custom line length) is defined in file .pep8
 # https://pep8.readthedocs.io/en/release-1.7.x/intro.html#configuration
+ci:
+    autofix_commit_msg: |
+        [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+        for more information, see https://pre-commit.ci
+    autofix_prs: false
+    autoupdate_branch: ''
+    # autoupdate_commit_msg: '[pre-commit.ci] pre-commit autoupdate'
+    # autoupdate_schedule: weekly
+    skip: []
+    submodules: false
 
 repos:
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.0.0
+    hooks:
+    -   id: flake8
+        args: [--select, 'F,W605,W291', --filename, '*.eb']
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    sha: v1.2.0
+    rev: v4.5.0
     hooks:
-      - id: autopep8-wrapper
-        name: 'autopep8-wrapper (.eb)'
-        types: [file]
-        files: \.eb$
       - id: check-ast
         name: 'check-ast (.eb)'
         types: [file]
         files: \.eb$
-      - id: autopep8-wrapper
       - id: check-ast
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: check-merge-conflict
 
-  - repo: https://github.com/easybuilders/pre-commit-hooks-easybuild
-    sha: v0.1
-    hooks:
-      - id: check-old-easybuild-url
